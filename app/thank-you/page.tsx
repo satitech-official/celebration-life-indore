@@ -1,0 +1,4 @@
+import Link from "next/link";
+import { PageHero } from "../../components/PageHero";
+import { businessConfig, phoneHref, whatsappHref } from "../../config/business";
+export default function ThankYou(){const wa=whatsappHref("I just submitted an enquiry through the website.");return <><PageHero eyebrow="Enquiry received" title="Thank you for sharing your celebration." copy="Your details have been saved. A response time has not been promised; please call directly if your event is time-sensitive."/><section className="page-content" style={{textAlign:"center"}}><a className="button button-dark" href={phoneHref(businessConfig.primaryPhone)}>Call Celebrate Life</a> {wa&&<a className="button button-dark" href={wa}>Continue on WhatsApp</a>} <Link className="button" href="/gallery">Browse inspiration</Link></section></>}

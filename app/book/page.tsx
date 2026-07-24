@@ -1,0 +1,6 @@
+import type { Metadata } from "next";
+import { Suspense } from "react";
+import { BookingForm } from "../../components/BookingForm";
+import { PageHero } from "../../components/PageHero";
+export const metadata:Metadata={title:"Book Your Event",description:"Share your event details with Celebrate Life Indore and request a customized decoration quotation."};
+export default function Book(){return <><PageHero eyebrow="Start your enquiry" title="Tell us what you’re celebrating." copy="Share the details you already know. The team can use them to discuss themes, availability and a suitable decoration direction."/><div className="dev-check">Launch checklist: Confirm the official WhatsApp number before enabling WhatsApp CTAs.</div><section className="page-content booking-layout"><div className="booking-copy"><p className="eyebrow dark">A thoughtful first step</p><h2>Your ideas,<br/><em>beautifully understood.</em></h2><p>No package or date is confirmed through this form alone. Celebrate Life will contact you using your preferred method to discuss the details.</p><div className="placeholder-note">Email notifications require RESEND_API_KEY and a verified sender. Database saving is configured through the site’s secure D1 storage.</div></div><Suspense fallback={<p>Loading booking form…</p>}><BookingForm/></Suspense></section></>}

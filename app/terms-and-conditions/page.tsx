@@ -1,0 +1,3 @@
+import { PageHero } from "../../components/PageHero";
+const items=["Booking confirmation","Advance-payment policy","Cancellation","Rescheduling","Venue access","Setup requirements","Damage responsibility","Outdoor weather conditions","Photography permission","Travel charges"];
+export default function Terms(){return <><PageHero eyebrow="Editable terms draft" title="Terms & Conditions" copy="Business-specific clauses are intentionally marked for review because confirmed policies were not supplied."/><section className="page-content"><div className="legal-grid">{items.map(h=><article className="legal-card" key={h}><h3>{h}</h3><p>Client review required — add the verified Celebrate Life policy for this topic before launch.</p></article>)}</div></section></>}
