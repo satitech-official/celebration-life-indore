@@ -1,3 +1,13 @@
 "use client";
+
 import { useEffect } from "react";
-export function ServiceWorker(){useEffect(()=>{if("serviceWorker"in navigator)navigator.serviceWorker.register("/sw.js").catch(()=>undefined)},[]);return null}
+
+export function ServiceWorker() {
+  useEffect(() => {
+    if (!("serviceWorker" in navigator)) return;
+    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+    navigator.serviceWorker.register(`${basePath}/sw.js`).catch(() => undefined);
+  }, []);
+
+  return null;
+}
