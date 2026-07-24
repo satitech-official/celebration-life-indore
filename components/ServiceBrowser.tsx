@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { ArrowRight, Search } from "lucide-react";
-import { eventImages, services } from "../content/site";
+import { getServiceImage, services } from "../content/site";
 
 export function ServiceBrowser() {
   const [query, setQuery] = useState("");
@@ -36,30 +36,28 @@ export function ServiceBrowser() {
       </div>
       {filtered.length ? (
         <div className="services-all">
-          {filtered.map((service) => {
-            const visual = eventImages[(Number(service.id) - 1) % eventImages.length];
-            return (
-              <article className="simple-service" key={service.slug}>
-                <div className="service-card-media">
-                  <Image
-                    src={visual.src}
-                    alt={`${service.title} decoration inspiration`}
-                    fill
-                    sizes="(max-width: 700px) 92vw, (max-width: 1100px) 45vw, 30vw"
-                  />
+          {filtered.map((service) => (
+            <article className="simple-service" key={service.slug}>
+              <div className="service-card-media">
+                <Image
+                  src={getServiceImage(service.slug)}
+                  alt={`${service.title} decoration inspiration`}
+                  fill
+                  sizes="(max-width: 700px) 92vw, (max-width: 1100px) 45vw, 30vw"
+                  className="service-card-image"
+                />
+              </div>
+              <div className="simple-service-content">
+                <span>{service.category}</span>
+                <h2>{service.title}</h2>
+                <p>{service.shortDescription}</p>
+                <div>
+                  <Link href={`/services/${service.slug}`}>View details <ArrowRight size={14} /></Link>
+                  <Link href={`/book?service=${service.slug}`}>Book</Link>
                 </div>
-                <div className="simple-service-content">
-                  <span>{service.category}</span>
-                  <h2>{service.title}</h2>
-                  <p>{service.shortDescription}</p>
-                  <div>
-                    <Link href={`/services/${service.slug}`}>View details <ArrowRight size={14} /></Link>
-                    <Link href={`/book?service=${service.slug}`}>Book</Link>
-                  </div>
-                </div>
-              </article>
-            );
-          })}
+              </div>
+            </article>
+          ))}
         </div>
       ) : (
         <div className="empty-state">
