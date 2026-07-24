@@ -21,19 +21,26 @@ export function ServiceBrowser() {
   );
 
   return (
-    <>
-      <div className="toolbar">
-        <label className="sr-only" htmlFor="service-search">Search services</label>
-        <input
-          id="service-search"
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-          placeholder="Search decoration services…"
-        />
-        <select value={category} onChange={(event) => setCategory(event.target.value)} aria-label="Filter by category">
-          {categories.map((item) => <option key={item}>{item}</option>)}
-        </select>
+    <div className="service-browser">
+      <div className="service-toolbar">
+        <div className="service-search-wrap">
+          <Search aria-hidden="true" />
+          <label className="sr-only" htmlFor="service-search">Search services</label>
+          <input
+            id="service-search"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="Search decoration services…"
+          />
+        </div>
+        <label className="service-filter">
+          <span>Filter by category</span>
+          <select value={category} onChange={(event) => setCategory(event.target.value)}>
+            {categories.map((item) => <option key={item}>{item}</option>)}
+          </select>
+        </label>
       </div>
+
       {filtered.length ? (
         <div className="services-all">
           {filtered.map((service) => (
@@ -43,29 +50,35 @@ export function ServiceBrowser() {
                   src={getServiceImage(service.slug)}
                   alt={`${service.title} decoration inspiration`}
                   fill
-                  sizes="(max-width: 700px) 92vw, (max-width: 1100px) 45vw, 30vw"
-                  className="service-card-image"
+                  sizes="(max-width: 720px) 92vw, (max-width: 1100px) 46vw, 31vw"
                 />
+                <span className="service-card-number">{String(service.id).padStart(2, "0")}</span>
               </div>
+
               <div className="simple-service-content">
-                <span>{service.category}</span>
+                <span className="service-card-category">{service.category}</span>
                 <h2>{service.title}</h2>
                 <p>{service.shortDescription}</p>
-                <div>
-                  <Link href={`/services/${service.slug}`}>View details <ArrowRight size={14} /></Link>
-                  <Link href={`/book?service=${service.slug}`}>Book</Link>
+
+                <div className="service-card-actions">
+                  <Link className="service-details-link" href={`/services/${service.slug}`}>
+                    View details <ArrowRight size={15} />
+                  </Link>
+                  <Link className="service-book-link" href={`/book?service=${service.slug}`}>
+                    Book now
+                  </Link>
                 </div>
               </div>
             </article>
           ))}
         </div>
       ) : (
-        <div className="empty-state">
+        <div className="empty-state service-empty-state">
           <Search />
           <h2>No matching services</h2>
           <p>Try a broader search or choose another category.</p>
         </div>
       )}
-    </>
+    </div>
   );
 }
