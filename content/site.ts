@@ -69,15 +69,55 @@ export const faqs = [
 ];
 
 export const eventImages = [
-  { src: "/events/birthday.jpg", category: "Birthday", title: "Emerald Birthday Celebration", source: "Pexels · Natalia S" },
-  { src: "/events/wedding-stage.jpg", category: "Wedding", title: "Elegant Floral Wedding Stage", source: "Pexels · Prashanti Nilam" },
-  { src: "/events/baby-shower.jpg", category: "Baby Shower", title: "Soft-Tone Baby Shower", source: "Pexels · Adriana Coulson" },
-  { src: "/events/outdoor-wedding.jpg", category: "Wedding", title: "Garden Wedding Experience", source: "Pexels · The Visionary Vows" },
-  { src: "/events/kids-theme.jpg", category: "Kids", title: "Pastel Kids’ Theme Setup", source: "Pexels · Amanda Cavalcante" },
-  { src: "/events/pink-birthday.jpg", category: "Birthday", title: "Pink Balloon Birthday", source: "Pexels · Hanna Auramenka" },
-  { src: "/events/birthday-roses.jpg", category: "Anniversary", title: "Rose & Balloon Celebration", source: "Pexels · Daniil Kondrashin" },
-  { src: "/events/kids-celebration.jpg", category: "Kids", title: "Colourful Kids’ Celebration", source: "Pexels · Bigmass Media" },
+  { id: "birthday-emerald", src: "/events/birthday.jpg", category: "Birthday", title: "Emerald Birthday Celebration", source: "Pexels · Natalia S" },
+  { id: "wedding-stage", src: "/events/wedding-stage.jpg", category: "Wedding", title: "Elegant Floral Wedding Stage", source: "Pexels · Prashanti Nilam" },
+  { id: "baby-shower-soft", src: "/events/baby-shower.jpg", category: "Baby Shower", title: "Soft-Tone Baby Shower", source: "Pexels · Adriana Coulson" },
+  { id: "outdoor-wedding", src: "/events/outdoor-wedding.jpg", category: "Wedding", title: "Garden Wedding Experience", source: "Pexels · The Visionary Vows" },
+  { id: "kids-pastel", src: "/events/kids-theme.jpg", category: "Kids", title: "Pastel Kids’ Theme Setup", source: "Pexels · Amanda Cavalcante" },
+  { id: "birthday-pink", src: "/events/pink-birthday.jpg", category: "Birthday", title: "Pink Balloon Birthday", source: "Pexels · Hanna Auramenka" },
+  { id: "anniversary-rose", src: "/events/birthday-roses.jpg", category: "Anniversary", title: "Rose & Balloon Celebration", source: "Pexels · Daniil Kondrashin" },
+  { id: "kids-colourful", src: "/events/kids-celebration.jpg", category: "Kids", title: "Colourful Kids’ Celebration", source: "Pexels · Bigmass Media" },
+  { id: "haldi-stage", src: "/events/outdoor-wedding.jpg", category: "Haldi", title: "Sunlit Haldi Celebration", source: "Curated event inspiration" },
+  { id: "proposal-romantic", src: "/events/birthday-roses.jpg", category: "Proposal", title: "Romantic Proposal Setup", source: "Curated event inspiration" },
+  { id: "balloon-signature", src: "/events/pink-birthday.jpg", category: "Balloon Decoration", title: "Signature Balloon Installation", source: "Curated event inspiration" },
+  { id: "corporate-stage", src: "/events/wedding-stage.jpg", category: "Corporate", title: "Premium Corporate Stage", source: "Curated event inspiration" },
+  { id: "room-romantic", src: "/events/birthday-roses.jpg", category: "Room Decoration", title: "Romantic Room Surprise", source: "Curated event inspiration" },
+  { id: "stage-premium", src: "/events/wedding-stage.jpg", category: "Stage Decoration", title: "Premium Statement Stage", source: "Curated event inspiration" },
 ];
+
+const serviceImageMap: Record<string, string> = {
+  "balloon-decoration": "/events/pink-birthday.jpg",
+  "birthday-decoration": "/events/birthday.jpg",
+  "anniversary-decoration": "/events/birthday-roses.jpg",
+  "baby-shower-decoration": "/events/baby-shower.jpg",
+  "haldi-decoration": "/events/outdoor-wedding.jpg",
+  "wedding-decoration": "/events/wedding-stage.jpg",
+  "engagement-decoration": "/events/outdoor-wedding.jpg",
+  "proposal-decoration": "/events/birthday-roses.jpg",
+  "ring-ceremony-decoration": "/events/wedding-stage.jpg",
+  "bride-to-be-decoration": "/events/pink-birthday.jpg",
+  "groom-to-be-decoration": "/events/outdoor-wedding.jpg",
+  "welcome-decoration": "/events/wedding-stage.jpg",
+  "corporate-events": "/events/outdoor-wedding.jpg",
+  "office-decoration": "/events/wedding-stage.jpg",
+  "festival-decoration": "/events/outdoor-wedding.jpg",
+  "kids-theme-parties": "/events/kids-theme.jpg",
+  "romantic-room-decoration": "/events/birthday-roses.jpg",
+  "car-decoration": "/events/outdoor-wedding.jpg",
+  "house-decoration": "/events/birthday.jpg",
+  "hotel-room-decoration": "/events/birthday-roses.jpg",
+  "reception-decoration": "/events/wedding-stage.jpg",
+  "stage-decoration": "/events/wedding-stage.jpg",
+  "mandap-decoration": "/events/outdoor-wedding.jpg",
+  "photography-setup": "/events/kids-celebration.jpg",
+  "custom-theme-decoration": "/events/kids-theme.jpg",
+  "surprise-decoration": "/events/pink-birthday.jpg",
+  "luxury-event-planning": "/events/wedding-stage.jpg",
+};
+
+export function getServiceImage(slug: string) {
+  return serviceImageMap[slug] || "/events/outdoor-wedding.jpg";
+}
 
 export const nav = [
   ["Home", "/"], ["About", "/about"], ["Services", "/services"], ["Gallery", "/gallery"],
